@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import ProductCard from "@/components/ProductCard";
+import NavBar from "@/components/NavBar";
 
 type SearchParams = {
   q?: string;
@@ -29,7 +30,7 @@ export default async function HerrenPage( {
 
   return (
     <main className="bg-gray-200 flex flex-col items-center">
-
+      <NavBar />
       <div className="flex justify-between mb-7 mt-15">
         <h1 className="text-2xl font-bold">Herren</h1>
       </div>

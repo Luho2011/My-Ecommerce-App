@@ -17,7 +17,7 @@ export default function ProductCard({ product } : ProductCardProps) {
             className="w-full h-95 object-cover mb-2"
         />
         <h2 className="my-2">{product.title}</h2>
-        <p className="font-bold mb-3">{product.price.toFixed(2)} €</p>
+        <p className="font-bold mb-3">{product.price} €</p>
         <AddToCartButton product={product} />
     </div>
   )

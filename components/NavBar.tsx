@@ -13,7 +13,7 @@ import SearchBar from './SearchBar';
 
 
 export default function NavBar() {
-const [openSection, setOpenSection] = useState(null)
+const [openSection, setOpenSection] = useState<string | null>(null);
 const [burgerLevel, setBurgerLevel] = useState<"main" | "section" | "brands">("main");
 const [activeBurgerSection, setActiveBurgerSection] = useState<MenuSection | null>(null);
 const [menuOpen, setMenuOpen] = useState(false);

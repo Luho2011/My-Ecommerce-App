@@ -142,7 +142,13 @@ const brands = await prisma.brand.findMany({
             </div>      
           <div className="flex flex-wrap gap-7">
             {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id}
+              product={{
+                title: product.title,
+                price: product.price,
+                imageUrl: product.imageUrl ?? undefined, // <-- WICHTIG
+              }}
+               />
             ))}
           </div>
         </div> 

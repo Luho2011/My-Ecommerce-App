@@ -148,7 +148,11 @@ console.log("Selected Brands:", selectedBrands)
                 {products.map((product) => (
                   <ProductCard
                     key={product.id}
-                    product={product}
+                    product={{
+                      title: product.title,
+                      price: product.price,
+                      imageUrl: product.imageUrl ?? undefined, 
+                    }}
                   />
                 ))}
             </div>

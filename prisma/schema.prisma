@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?  @unique
+  emailVerified DateTime?
+  image     String?
+  password  String?
+
+  accounts  Account[]
+  sessions  Session[]
+  orders    Order[]
+
+  createdAt DateTime @default(now())
+}
+
+model Account {
+  id                String @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  access_token      String?
+  refresh_token     String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  slug      String    @unique
+  parentId  Int?
+  parent    Category? @relation("CategoryTree", fields: [parentId], references: [id])
+  children  Category[] @relation("CategoryTree")
+
+  products Product[]
+}
+
+model Brand {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  slug  String @unique
+
+  products Product[]
+}
+
+model Product {
+  id         Int       @id @default(autoincrement())
+  title      String
+  description String?
+  price      Float
+  createdAt  DateTime  @default(now())
+  imageUrl   String?
+  gender     Gender
+  categoryId Int?
+  brandId    Int?
+
+  category   Category? @relation(fields: [categoryId], references: [id])
+  brand    Brand?   @relation(fields: [brandId], references: [id])
+
+  variants ProductVariant[]
+}
+
+model ProductVariant {
+  id        Int @id @default(autoincrement())
+  productId Int
+  colorId   Int
+  sizeId    Int
+  stock     Int
+
+  product Product @relation(fields: [productId], references: [id])
+  color   Color   @relation(fields: [colorId], references: [id])
+  size    Size    @relation(fields: [sizeId], references: [id])
+
+  @@unique([productId, colorId, sizeId])
+}
+
+model Color {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  hex   String?
+
+  variants ProductVariant[]
+}
+
+model Size {
+  id    Int    @id @default(autoincrement())
+  label String @unique
+
+  variants ProductVariant[]
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  total     Float
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+enum Gender {
+  HERREN
+  DAMEN
+}
+

@@ -1,8 +1,17 @@
 "use client"
-
 import { useRouter, useSearchParams } from "next/navigation"
 
-export default function Filters({ colors }) {
+type Color = {
+  id: number
+  name: string
+  hex: string | null
+}
+
+type FiltersProps = {
+  colors: Color[]
+}
+
+export default function Filters({ colors }: FiltersProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
 

@@ -4,17 +4,18 @@ import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useCartStore } from "@/store/cart-store"
 import { useSession } from "next-auth/react";
-import { genders, menu, brands } from "@/lib/menu"
+import { genders, menu, brands, MenuSection } from "@/lib/menu"
 import { useParams, usePathname } from "next/navigation"
 import { UserIcon } from "@heroicons/react/24/outline"
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import SearchBar from './SearchBar';
 
 
+
 export default function NavBar() {
 const [openSection, setOpenSection] = useState(null)
 const [burgerLevel, setBurgerLevel] = useState<"main" | "section" | "brands">("main");
-const [activeBurgerSection, setActiveBurgerSection] = useState<string | null>(null);
+const [activeBurgerSection, setActiveBurgerSection] = useState<MenuSection | null>(null);
 const [menuOpen, setMenuOpen] = useState(false);
 const [burgerOpen, setBurgerOpen] = useState(false);
 const { data: session } = useSession();

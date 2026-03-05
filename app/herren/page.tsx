@@ -1,7 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import AddToCartButton from "@/components/add-to-cart-button";
-import NavBar from "@/components/NavBar";
 import ProductCard from "@/components/ProductCard";
 
 type SearchParams = {

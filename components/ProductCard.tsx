@@ -1,4 +1,3 @@
-"use client"
 import AddToCartButton from "./add-to-cart-button";
 
 type ProductCardProps = {

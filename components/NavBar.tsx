@@ -18,7 +18,7 @@ const [activeBurgerSection, setActiveBurgerSection] = useState<string | null>(nu
 const [menuOpen, setMenuOpen] = useState(false);
 const [burgerOpen, setBurgerOpen] = useState(false);
 const { data: session } = useSession();
-const userId = session?.user?.id;
+const userId = (session?.user as { id?: string })?.id;
 const items = useCartStore(state => state.items)
 const clearCart = useCartStore(state => state.clear)
 const pathname = usePathname()

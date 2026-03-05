@@ -102,18 +102,20 @@ useEffect(() => {
                   {/* LEVEL 1 */}
                 {burgerLevel === "main" && (
                   <>
-                    {Object.keys(menu).map((section) => (
+                  {(Object.keys(menu) as MenuSection[]).map((section) => {
+                    return (
                       <button
                         key={section}
                         onClick={() => {
-                          setActiveBurgerSection(section)
-                          setBurgerLevel("section")
+                          setActiveBurgerSection(section); // ✅ section ist MenuSection
+                          setBurgerLevel("section");
                         }}
                         className="text-left py-3 border-b border-white text-white cursor-pointer"
                       >
                         {section} →
                       </button>
-                    ))}
+                    );
+                  })}
 
                     <button
                       onClick={() => setBurgerLevel("brands")}

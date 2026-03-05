@@ -5,6 +5,7 @@ import SizeFilter from "@/components/SizeFilter"
 import PriceFilter from "@/components/PriceFilter"
 import BrandFilter from "@/components/BrandFilter"
 import FilterMenu from "@/components/FilterMenu"
+import NavBar from "@/components/NavBar"
 
 type BrandPageProps = {
   params: {
@@ -118,7 +119,7 @@ const brands = await prisma.brand.findMany({
 
   return (
     <main className="bg-gray-200 flex flex-col items-center min-h-screen">
-
+      <NavBar/>
       <div className="mt-20 w-3/4">
         <h1 className="text-2xl font-bold capitalize mb-6">
           {slug}

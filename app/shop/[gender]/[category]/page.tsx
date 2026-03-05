@@ -5,6 +5,7 @@ import SizeFilter from "@/components/SizeFilter"
 import PriceFilter from "@/components/PriceFilter"
 import BrandFilter from "@/components/BrandFilter"
 import FilterMenu from "@/components/FilterMenu"
+import NavBar from "@/components/NavBar"
 
 
 type CategoryPageProps = {
@@ -122,6 +123,7 @@ console.log("Selected Brands:", selectedBrands)
 
   return (
     <main className="bg-gray-200 flex flex-col items-center">
+       <NavBar/>
       <div className="flex justify-between mb-7 mt-15">
         <h1 className="text-2xl font-bold capitalize">
           {gender} – {category}

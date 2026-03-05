@@ -1,5 +1,11 @@
-"use client";
+import { Suspense } from "react";
+import NotFoundContent from "./NotFoundContent/page";
+
 
 export default function NotFoundPage() {
-  return <h1>404 - Seite nicht gefunden</h1>;
+  return (
+    <Suspense fallback={<div>Lädt...</div>}>
+      <NotFoundContent />
+    </Suspense>
+  );
 }

@@ -41,6 +41,7 @@ export default async function HerrenPage( {
           <ProductCard
             key={product.id}
             product={{
+              id: product.id,
               title: product.title,
               price: product.price,
               imageUrl: product.imageUrl ?? undefined,

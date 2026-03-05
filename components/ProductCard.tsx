@@ -2,6 +2,7 @@ import AddToCartButton from "./add-to-cart-button";
 
 type ProductCardProps = {
   product: {
+    id: number;
     title: string;
     price: number;
     imageUrl?: string;

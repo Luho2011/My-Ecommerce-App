@@ -149,6 +149,7 @@ console.log("Selected Brands:", selectedBrands)
                   <ProductCard
                     key={product.id}
                     product={{
+                      id: product.id,
                       title: product.title,
                       price: product.price,
                       imageUrl: product.imageUrl ?? undefined, 

@@ -9,20 +9,20 @@ export default function BrandFilter({ brands }: Props) {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  const selected = searchParams.get("brand")?.split(",") ?? []
+  const selected = searchParams.get("brand")?.split(",") ?? [] // aktuell ausgewählte marke
 
   function toggleBrand(name: string) {
     const params = new URLSearchParams(searchParams.toString())
-    const current = params.get("brand")?.split(",") ?? []
+    const current = params.get("brand")?.split(",") ?? [] // split hier für marken in array umwandeln, current hier array von marken
 
-    const next = current.includes(name)
-      ? current.filter((b) => b !== name)
+    const next = current.includes(name) // next aktuelles array mit den marken als filter
+      ? current.filter((b) => b !== name) // wenn name in current schon drin ist, filter es raus -> behalte alles, was nicht name ist
       : [...current, name]
 
     if (next.length === 0) {
       params.delete("brand")
     } else {
-      params.set("brand", next.join(","))
+      params.set("brand", next.join(",")) // join macht hier das Gegenteil von split, bringt marken quasi wieder zusammen
     }
 
     router.push(`?${params.toString()}`)

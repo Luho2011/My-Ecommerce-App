@@ -19,6 +19,7 @@ type CartStore = {
 }
 
 export const useCartStore = create<CartStore>()(
+  // Localstorage
   persist(
     (set, get) => ({
       items: [],
@@ -72,7 +73,7 @@ export const useCartStore = create<CartStore>()(
       clear: () => set({ items: [] }),
     }),
     {
-      name: "cart-storage", // 🔥 key in localStorage
+      name: "cart-storage", // key in localStorage
     }
   )
 )

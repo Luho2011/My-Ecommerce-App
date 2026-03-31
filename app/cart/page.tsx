@@ -3,8 +3,10 @@ import { useCartStore } from "@/store/cart-store"
 import Link from "next/link"
 
 export default function CartPage() {
+  // auf warenkorb zugreifen
   const { items, removeItem, increaseQuantity, decreaseQuantity } = useCartStore()
 
+  // Gesamtpreis ermitteln -> reduce geht items durch -> acc = zwischensumme, start bei 0
   const total = items.reduce((acc, i) => acc + i.price * i.quantity, 0)
 
   return (

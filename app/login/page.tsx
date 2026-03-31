@@ -10,7 +10,7 @@ export default function Login() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      {/* Email Login */}
+      {/* Email Login ohne Bestätigungsmail */}
       <input
         placeholder="Email"
         value={email}

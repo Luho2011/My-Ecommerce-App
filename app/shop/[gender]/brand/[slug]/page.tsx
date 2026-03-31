@@ -22,7 +22,7 @@ export default async function BrandPage({
 
   const { gender, slug } = await params
   const genderEnum = gender.toUpperCase() as "HERREN" | "DAMEN"
-  const resolvedSearchParams = await searchParams; // Promise
+  const resolvedSearchParams = await searchParams; // Promise auflösen
   const selectedColors = resolvedSearchParams.color?.split(",") ?? [];
   const selectedSizes = resolvedSearchParams.size?.split(",") ?? [];
   const min = resolvedSearchParams.priceMin ? Number(resolvedSearchParams.priceMin) : undefined
@@ -148,7 +148,7 @@ const brands = await prisma.brand.findMany({
                 id: product.id,
                 title: product.title,
                 price: product.price,
-                imageUrl: product.imageUrl ?? undefined, // <-- WICHTIG
+                imageUrl: product.imageUrl ?? undefined, 
               }}
                />
             ))}

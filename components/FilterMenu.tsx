@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 
+// bekommt über children alle individuellen filter
 export default function FilterMenu({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
 

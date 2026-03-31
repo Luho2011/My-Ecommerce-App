@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
 
-    // ✅ Email / Passwort
+    // Email / Passwort
     CredentialsProvider({
       name: "credentials",
       credentials: {

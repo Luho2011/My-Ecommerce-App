@@ -107,7 +107,7 @@ useEffect(() => {
                       <button
                         key={section}
                         onClick={() => {
-                          setActiveBurgerSection(section); // ✅ section ist MenuSection
+                          setActiveBurgerSection(section); // section ist MenuSection
                           setBurgerLevel("section");
                         }}
                         className="text-left py-3 border-b border-white text-white cursor-pointer"
@@ -126,7 +126,7 @@ useEffect(() => {
                   </>
                 )}
 
-                  {/* LEVEL 2 – Kategorien */}
+                  {/* Kategorien */}
                 {burgerLevel === "section" && activeBurgerSection && (
                   <>
                     <button
@@ -149,7 +149,7 @@ useEffect(() => {
                   </>
                 )}
 
-                  {/* LEVEL 2 – Marken */}
+                  {/* Marken */}
                 {burgerLevel === "brands" && (
                   <>
                     <button

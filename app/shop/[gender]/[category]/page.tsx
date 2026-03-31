@@ -23,14 +23,14 @@ export default async function CategoryPage({
 
   const { gender, category } = await params
   const genderEnum = gender.toUpperCase() as "HERREN" | "DAMEN"
-  const resolvedSearchParams = await searchParams; // Promise
+  const resolvedSearchParams = await searchParams; // Promise auflösen
   const selectedColors = resolvedSearchParams.color?.split(",") ?? [];
   const selectedSizes = resolvedSearchParams.size?.split(",") ?? [];
   const selectedBrands = resolvedSearchParams.brand?.split(",") ?? []
   const min = resolvedSearchParams.priceMin ? Number(resolvedSearchParams.priceMin) : undefined
   const max = resolvedSearchParams.priceMax ? Number(resolvedSearchParams.priceMax) : undefined
 
-    // Color Filter
+    // Color Filter unten an Filter übergeben
     const colors = await prisma.color.findMany({
     where: {
       variants: {
@@ -45,7 +45,7 @@ export default async function CategoryPage({
     orderBy: { name: "asc" },
   })
 
-  // Size Filter
+  // Size Filter unten an Filter übergeben
   const sizes = await prisma.size.findMany({
   where: {
     variants: {
@@ -60,7 +60,7 @@ export default async function CategoryPage({
   orderBy: { label: "asc" },
 })
 
-// Brand Filter
+// Brand Filter unten an Filter übergeben
 const brands = await prisma.brand.findMany({
   where: {
     products: {

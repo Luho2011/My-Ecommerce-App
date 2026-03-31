@@ -18,7 +18,7 @@ export default function PriceFilter({ minPrice, maxPrice }: Props) {
   const [minVal, setMinVal] = useState(initialMin)
   const [maxVal, setMaxVal] = useState(initialMax)
 
-  // Verhindert Überschneiden
+  // verhindert überschneiden
   useEffect(() => {
     if (minVal > maxVal) {
       setMinVal(maxVal)
